@@ -3,7 +3,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include <string>
+#include <cstring>
 #include <cstdlib>
 
 #include <radix/core/gl/OpenGL.hpp>
@@ -17,6 +17,7 @@
 #include <radix/env/Util.hpp>
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
 
 namespace radix {
 
