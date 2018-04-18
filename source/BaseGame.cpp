@@ -7,6 +7,7 @@
 #include <radix/SoundManager.hpp>
 #include <radix/renderer/Renderer.hpp>
 #include <radix/renderer/ScreenRenderer.hpp>
+#include <radix/renderer/GameRenderer.hpp>
 #include <radix/simulation/Player.hpp>
 #include <radix/simulation/Physics.hpp>
 #include <radix/entities/Player.hpp>
@@ -71,7 +72,10 @@ void BaseGame::setup() {
   createScreenshotCallbackHolder();
 
   screenRenderer = std::make_unique<ScreenRenderer>(*world, *renderer.get(), gameWorld);
+  gameRenderer =
+    std::make_unique<GameRenderer>(*world, *renderer.get(), world->camera.get());
   renderer->addRenderer(*screenRenderer);
+  renderer->addRenderer(*gameRenderer);
 
   postSetup();
 }

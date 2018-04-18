@@ -13,11 +13,11 @@
 #include <radix/Window.hpp>
 #include <radix/renderer/Renderer.hpp>
 #include <radix/renderer/ScreenRenderer.hpp>
+#include <radix/renderer/GameRenderer.hpp>
 #include <radix/core/event/EventDispatcher.hpp>
 #include <radix/data/map/XmlMapLoader.hpp>
 #include <radix/data/map/CustomTrigger.hpp>
 #include <radix/data/screen/Screen.hpp>
-#include <radix/renderer/ScreenRenderer.hpp>
 #include <radix/env/Config.hpp>
 #include <radix/input/InputManager.hpp>
 
@@ -26,6 +26,7 @@ namespace radix {
 class Renderer;
 class Screen;
 class ScreenRenderer;
+class GameRenderer;
 class World;
 
 const int UPDATE_RATE = 60;
@@ -91,6 +92,7 @@ public:
   void clearOtherWorldList();
 
   ScreenRenderer* getScreenRenderer();
+  GameRenderer* getGameRenrerer();
   GameWorld* getGameWorld();
   inline Window& getWindow() {
     return window;
@@ -118,6 +120,7 @@ protected:
   std::vector<std::function<void()>> postCycleDeferred;
 
   std::shared_ptr<ScreenRenderer> screenRenderer;
+  std::shared_ptr<GameRenderer> gameRenderer;
   std::unique_ptr<Renderer> renderer;
   std::shared_ptr<radix::Screen> screen;
   EventDispatcher::CallbackHolder screenshotCallbackHolder;
